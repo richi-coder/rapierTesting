@@ -5,6 +5,8 @@ import Stats from 'stats.js'
 import RAPIER from 'https://cdn.skypack.dev/@dimforge/rapier3d-compat';
 
 RAPIER.init().then(() => {
+  // Debug
+  
   // Use the RAPIER module here.
   let gravity = { x: 0.0, y: -9.81, z: 0.0 };
   let world = new RAPIER.World(gravity);
@@ -12,6 +14,7 @@ RAPIER.init().then(() => {
   // Create the ground
   let groundColliderDesc = RAPIER.ColliderDesc.cuboid(10.0, 0.1, 10.0);
   world.createCollider(groundColliderDesc);
+  world.debugRender()
 
   // Create a dynamic rigid-body.
   let rigidBodyDesc = RAPIER.RigidBodyDesc.dynamic()
@@ -32,6 +35,9 @@ RAPIER.init().then(() => {
   plane.rotation.x = -Math.PI / 2
   plane.position.set(0,0,0)
   cube.position.set(rigidBody.translation().x,rigidBody.translation().y,rigidBody.translation().z)
+
+  // Debug
+  new RAPIER.DebugRenderPipeline()
 
   //
   let stats = new Stats();
