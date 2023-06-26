@@ -71,7 +71,7 @@ RAPIER.init().then(() => {
     cube.position.set(vector.x,vector.y-2.5,vector.z)
     cube.quaternion.copy(rotation)
     console.log(cube.quaternion,'quat', );
-    setTimeout(gameLoop, 16);
+    setTimeout(gameLoop, 8);
   };
 
   gameLoop();
