@@ -1,16 +1,21 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-// export const threeMain = (x,y,z) => {
-    const scene = new THREE.Scene()
+    export const cubeDimensions = {
+        x: 0.5,
+        y: 0.5,
+        z: 0.5
+    }
 
-    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    export const scene = new THREE.Scene()
 
-    const renderer = new THREE.WebGLRenderer();
+    export const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+    export const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
 
-    const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+    const geometry = new THREE.BoxGeometry( cubeDimensions.x, cubeDimensions.y, cubeDimensions.z );
     const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
     export const cube = new THREE.Mesh( geometry, material );
 
@@ -24,19 +29,11 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     
     camera.position.set(15,15,10)
 
-    // cube.position.set(x,y,z)
 
     const controls = new OrbitControls( camera, renderer.domElement );
 
-    function animate() {
-        requestAnimationFrame( animate );
-        renderer.render( scene, camera );
-    }
-    animate()
-    
-// }
-
-// export const updateCube = (x,y,z) => {
-//     cube.position.set(x,y,z)
-//     console.log(cube.position);
-// }
+    // function animate() {
+    //     requestAnimationFrame( animate );
+    //     renderer.render( scene, camera );
+    // }
+    // animate()
