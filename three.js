@@ -2,9 +2,9 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
     export const cubeDimensions = {
-        x: 0.5,
-        y: 0.5,
-        z: 0.5
+        x: 5,
+        y: 5,
+        z: 5
     }
 
     export const scene = new THREE.Scene()
