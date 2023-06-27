@@ -3,10 +3,8 @@ import './style.css'
 import Stats from 'stats.js'
 import * as THREE from 'three'
 
-import RAPIER from 'https://cdn.skypack.dev/@dimforge/rapier3d-compat';
-
-RAPIER.init().then(() => {
-  // Debug
+// RAPIER.init().then(() => {
+  import('@dimforge/rapier3d').then(RAPIER => {
   
   // Use the RAPIER module here.
   let gravity = { x: 0.0, y: -9.81, z: 0.0 };
@@ -44,7 +42,6 @@ RAPIER.init().then(() => {
   let stats = new Stats();
   stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
   document.body.appendChild( stats.dom );
-  console.log(rigidBody.rotation(), 'here');
 
   // Game loop. Replace by your own game loop system.
   let gameLoop = () => {
@@ -70,7 +67,6 @@ RAPIER.init().then(() => {
     
     cube.position.set(vector.x,vector.y-2.5,vector.z)
     cube.quaternion.copy(rotation)
-    console.log(cube.quaternion,'quat', );
     setTimeout(gameLoop, 8);
   };
 
