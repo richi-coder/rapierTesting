@@ -3,9 +3,10 @@ import './style.css'
 import Stats from 'stats.js'
 import * as THREE from 'three'
 
+// import RAPIER from 'https://cdn.skypack.dev/@dimforge/rapier3d-compat';
+
 // RAPIER.init().then(() => {
   import('@dimforge/rapier3d').then(RAPIER => {
-  
   // Use the RAPIER module here.
   let gravity = { x: 0.0, y: -9.81, z: 0.0 };
   let world = new RAPIER.World(gravity);
@@ -29,6 +30,21 @@ import * as THREE from 'three'
   // Create a cuboid collider attached to the dynamic rigidBody.
   let colliderDesc = RAPIER.ColliderDesc.cuboid(cubeDimensions.x, cubeDimensions.y, cubeDimensions.z);
   let collider = world.createCollider(colliderDesc, rigidBody);
+
+
+  const vehicle = world.createVehicleController()
+  
+  vehicle.addWheel(
+    wheel.position,
+    new Vector3(0, -1, 0),
+    new Vector3(0, 0, 1),
+    suspensionRestLength,
+    radius
+  );
+
+
+
+  // ----- THREE JS
 
   // Run three.js
   plane.rotation.x = -Math.PI / 2
